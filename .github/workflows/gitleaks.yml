@@ -1,0 +1,25 @@
+name: Gitleaks Scan
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to the 'main' branch
+  pull_request:
+    branches:
+      - main  # Trigger on pull requests targeting the 'main' branch
+
+jobs:
+  scan:
+    name: gitleaks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - run: wget -O .gitleaks.toml https://raw.githubusercontent.com/tanookiai/central-configuration/master/config/gitleaks.toml
+      - name: confirm file
+        run: |
+          cat .gitleaks.toml
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
