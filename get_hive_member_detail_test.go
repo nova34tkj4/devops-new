@@ -78,8 +78,8 @@ func TestServiceHive_GetHiveMemberDetail(t *testing.T) {
 				}, nil).Once()
 
 				mockAccountRepo.On("GetMultipleAccounts", mockCtx, []uint64{3, 4}).Return([]accounts.Account{
-					{Id: 3, WalletPublicKey: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e", Username: "user3"}, // #gitleaks:allow
-					{Id: 4, WalletPublicKey: "0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73", Username: "user4"}, // #gitleaks:allow
+					{Id: 3, WalletPublicKey: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e", Username: "user3"},
+					{Id: 4, WalletPublicKey: "0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73", Username: "user4"},
 				}, nil).Once()
 
 				mockProductTokensRepo.On("GetProductTokens", mockCtx, producttokens.ProductTokenFields{
